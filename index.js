@@ -35,6 +35,7 @@ var KarmaRemapIstanbul = function (baseReporterDecorator, logger, config) {
 
     // Add watcher for source files
     var watcher = chokidar.watch(sources, {
+      usePolling: true,
       awaitWriteFinish: {
         stabilityThreshold: 500,
         pollInterval: 100
