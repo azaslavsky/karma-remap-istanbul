@@ -73,6 +73,7 @@ var KarmaRemapIstanbul = function (baseReporterDecorator, logger, config) {
     }, timeoutNotCreated);
     
     function failNoFiles() {
+      pendingReport--;
       watcher.close();
       log.warn('Could not find any specified files, exiting without doing anything.');
       reportFinished();
@@ -93,6 +94,7 @@ var KarmaRemapIstanbul = function (baseReporterDecorator, logger, config) {
    * plugin execution after successfull or erroneous return value from remapIstanbul
    */
   function remap(watcher) {
+    pendingReport--;
     watcher.close();
 
     remapIstanbul(sources, reports).then(
